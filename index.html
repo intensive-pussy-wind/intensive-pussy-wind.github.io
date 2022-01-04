@@ -104,7 +104,8 @@ getBets()
 )).then (function(x){ 
     let bets = ""
     var total = 0
-    for (var i = x.data.length - 1; i >= 0; i--) {
+    const test = x.data.reverse();
+    for (let i = 0; i < test.length; i++) {
       bets = bets + "&bull; <b>" + x.data[i].data.name + "</b> bets <b>£" + x.data[i].data.money + "</b> that the queen will die on <b>" + x.data[i].data.date.replace(/-/g, "/") + "</b><br>"
 
     }    
