@@ -28,6 +28,12 @@
             alert("Please fill in all fields before placing a bet.")
         }
         else{
+            if(parseInt(document.getElementById("money").value) > 10000)
+            {
+              alert("Please bet less than £10000.")
+            }
+            else
+            {
         client.query(
   q.Create(
     q.Collection('falconbet'),
@@ -39,7 +45,8 @@
 console.log(ret)
 
 })
-        }
+        }}
+        
 
 
     }
