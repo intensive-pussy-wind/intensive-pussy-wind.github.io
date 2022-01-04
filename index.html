@@ -2,16 +2,30 @@
 <html>
     <head>
         <title>FalconBet</title>
+        <script src="https://cdn.jsdelivr.net/npm/faunadb@latest/dist/faunadb.js"></script>
     </head>
     <body>
 <h1>When will the queen die?</h1>
 <h2>Place your bets now!</h2>
 <label>Username</label>
-<input style="margin-left: 10px;" placeholder="Enter a name..." type="text"><br><br>
+<input id="username" style="margin-left: 10px;" placeholder="Enter a name..." type="text"><br><br>
 <label>Amount (£)</label>
-<input style="margin-left: 10px;" placeholder="Enter an amount..." type="number"><br><br>
+<input id="money" style="margin-left: 10px;" placeholder="Enter an amount..." type="number"><br><br>
 <label>Date</label>
-<input style="margin-left: 10px;" placeholder="Enter a date..." type="date"><br><br>
-<button style="cursor: pointer; width: 200px; height: 25px;">Place Bet!</button>
+<input id="date" style="margin-left: 10px;" placeholder="Enter a date..." type="date"><br><br>
+<button onclick="placeBet()" style="cursor: pointer; width: 200px; height: 25px;">Place Bet!</button>
+<script>
+    var faunadb = window.faunadb
+  var q = faunadb.query
+  var client = new faunadb.Client({
+    secret: 'fnAEcG0iEaAAyB4b6yraRVIIsvt7lFIxvPDfiD6y',
+    domain: 'db.eu.fauna.com',
+    scheme: 'https',
+  })
+    function placeBet(){
+
+
+    }
+</script>
     </body>
 </html>
