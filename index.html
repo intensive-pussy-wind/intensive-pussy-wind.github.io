@@ -27,6 +27,16 @@ body{
       <div style="text-align: center;">
 <h1>When will the queen die?</h1>
 <h2 id="title">Place your bets now and you could win £0!</h2>
+<div style="background-color: #313131; border-radius: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 35%; margin: 0 auto; padding: 1.5rem;">
+  <label style="color: #cccccc;"><i>Want to place a bet? Just fill out the form below.</i></label><br><br>
+  <label style="font-size: 18px;">Username</label><br>
+  <input id="username" type="text" placeholder="Enter a name..." style="border: none; height: 25px; border-radius: 7px; background-color: #292929; padding: 5px; color: white; width:60%"><br><br>
+  <label style="font-size: 18px;">Amount (£)</label><br>
+  <input id="money" type="number" placeholder="Enter an amount..." style="border: none; height: 25px; border-radius: 7px; background-color: #292929; padding: 5px; color: white; width:60%"><br><br>
+  <label style="font-size: 18px;">Your Link</label><br>
+  <input id="date" type="date" style="border: none; height: 25px; border-radius: 7px; background-color: #292929; padding: 5px; color: white; width:60%"><br><br>
+  <button onclick="generate()" style="border: none; border-radius: 5px; cursor: pointer; height: 40px; font-size: 15px; padding-left: 10px; padding-right: 10px; font-family: 'Rubik'; color: white; background-color: #18ab44;">Create Link</button>
+  </div>
 <label>Username</label>
 <input id="username" style="margin-left: 10px; font-family: 'Rubik'" placeholder="Enter a name..." type="text"><br><br>
 <label>Amount (£)</label>
