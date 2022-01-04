@@ -23,6 +23,22 @@
     scheme: 'https',
   })
     function placeBet(){
+        if(document.getElementById("username").value == "" || document.getElementById("date").value == "" || document.getElementById("money").value == ""){
+            alert("Please fill in all fields before placing a bet.")
+        }
+        else{
+        client.query(
+  q.Create(
+    q.Collection('falconbet'),
+    { data: { name: document.getElementById("username").value, date:  document.getElementById("date").value, money:  document.getElementById("money").value } },
+  )
+)
+.then(function (ret){
+
+console.log(ret)
+
+})
+        }
 
 
     }
