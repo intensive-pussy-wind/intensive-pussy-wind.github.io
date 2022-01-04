@@ -13,6 +13,8 @@
 <input id="money" style="margin-left: 10px;" placeholder="Enter an amount..." type="number"><br><br>
 <label>Date</label>
 <input id="date" style="margin-left: 10px;" placeholder="Enter a date..." type="date"><br><br>
+<label id="question">(Anti-Spam) Type AAAAAA in the box below.</label>
+<input id="date" style="margin-left: 10px;" placeholder="Enter a date..." type="date"><br><br>
 <button onclick="placeBet()" style="cursor: pointer; width: 200px; height: 25px;">Place Bet!</button><br><br>
 <h2>Recent Bets</h2>
 <label id="bets"></label>
@@ -24,6 +26,7 @@
     domain: 'db.eu.fauna.com',
     scheme: 'https',
   })
+  let captcha = ""
     function placeBet(){
         if(document.getElementById("username").value == "" || document.getElementById("date").value == "" || document.getElementById("money").value == ""){
             alert("Please fill in all fields before placing a bet.")
@@ -52,8 +55,21 @@ getBets()
 
     }
 
+    function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
+
 
     function getBets(){
+      captcha = makeid(6)
+      document.getElementById("question").innerHTML = "(Anti-Spam) Type " + captcha + " in the box below."
         client.query(
    q.Map(
   q.Paginate(q.Documents(q.Collection('falconbet2'))),
