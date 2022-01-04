@@ -51,6 +51,15 @@ body {
   color: #cccccc;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
     </style>
     <body onload="getBets()" class="test">
       <div style="text-align: center;">
@@ -74,7 +83,10 @@ body {
       <label id="allbets" style="color: #cccccc;"><i>Here are some recently generated invites.</i></label><br><br>
       <label id="bets">Loading...</label>
   </div>
-      </div>
+      </div><br><br>
+      <div class="footer">
+          <p style="color: #cccccc;"><i>Copyright © 2020-2021 AbSq | All Rights Reserved.</i></p>
+        </div>
 <script>
     var faunadb = window.faunadb
   var q = faunadb.query
