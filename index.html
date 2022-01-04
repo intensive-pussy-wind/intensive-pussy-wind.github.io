@@ -4,7 +4,13 @@
         <title>FalconBet</title>
         <script src="https://cdn.jsdelivr.net/npm/faunadb@latest/dist/faunadb.js"></script>
     </head>
+    <style>
+body{
+  font-family: 'Segoe UI';
+}
+    </style>
     <body onload="getBets()">
+      <div style="text-align: center;">
 <h1>When will the queen die?</h1>
 <h2 id="title">Place your bets now and you could win £0!</h2>
 <label>Username</label>
@@ -14,10 +20,11 @@
 <label>Date</label>
 <input id="date" style="margin-left: 10px;" placeholder="Enter a date..." type="date"><br><br>
 <label id="question">(Anti-Spam) Type AAAAAA in the box to verify.</label>
-<input id="response" style="margin-left: 10px;" placeholder="Enter a date..." type="text"><br><br>
+<input id="response" style="margin-left: 10px;" placeholder="Enter the code..." type="text"><br><br>
 <button onclick="placeBet()" style="cursor: pointer; width: 200px; height: 25px;">Place Bet!</button><br><br>
 <h2>Recent Bets</h2>
 <label id="bets"></label>
+      </div>
 <script>
     var faunadb = window.faunadb
   var q = faunadb.query
