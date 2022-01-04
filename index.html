@@ -35,7 +35,21 @@ body {
     background-image: linear-gradient(to right, #262626, #454545);
 
 }
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
+
+.closebtn:hover {
+  color: #cccccc;
+}
 
     </style>
     <body onload="getBets()" class="test">
@@ -54,9 +68,12 @@ body {
   <input id="response" placeholder="Enter a code..." type="text" style="border: none; font-family: 'Rubik'; height: 25px; border-radius: 7px; background-color: #292929; padding: 5px; color: white; width:60%"><br><br>
   <button onclick="placeBet()" style="border: none; border-radius: 5px; cursor: pointer; height: 40px; font-size: 15px; padding-left: 10px; padding-right: 10px; font-family: 'Rubik'; color: white; background-color: #18ab44;">Place Bet!</button>
   </div>
-
-<h2 id="allbets">All Bets</h2>
-<label style="max-height: 30px; overflow: auto;" id="bets"></label>
+  <br><br>
+  <div style="background-color: #313131; border-radius: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 25%; margin: 0 auto; padding: 1.5rem;">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <label id="allbets" style="color: #cccccc;"><i>Here are some recently generated invites.</i></label><br><br>
+      <label id="bets">Loading...</label>
+  </div>
       </div>
 <script>
     var faunadb = window.faunadb
