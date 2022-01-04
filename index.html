@@ -104,7 +104,7 @@ getBets()
 )).then (function(x){ 
     let bets = ""
     var total = 0
-    for (var i = x.data.length - 1; i >= 0; i--) {
+    for (var i = 10 - 1; i >= 0; i--) {
       bets = bets + "&bull; " + x.data[i].data.name + " bets £" + x.data[i].data.money + " that the queen will die on " + x.data[i].data.date + "<br>"
 
     }    
