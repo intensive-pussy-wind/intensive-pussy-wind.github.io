@@ -36,7 +36,7 @@ body{
 <label id="question">(Anti-Spam) Type AAAAAA in the box to verify.</label>
 <input id="response" style="margin-left: 10px; font-family: 'Rubik'" placeholder="Enter the code..." type="text"><br><br>
 <button onclick="placeBet()" style="cursor: pointer; width: 200px; height: 25px; font-family: 'Rubik'">Place Bet!</button><br><br>
-<h2>Recent Bets</h2>
+<h2 id="allbets">All Bets</h2>
 <label id="bets"></label>
       </div>
 <script>
@@ -104,8 +104,8 @@ getBets()
 )).then (function(x){ 
     let bets = ""
     var total = 0
-    for (let i = 10; i < 5; i++) {
-      bets = bets + "&bull; " + x.data[x.data.length - i].data.name + " bets £" + x.data[x.data.length - i].data.money + " that the queen will die on " + x.data[x.data.length - i].data.date + "<br>"
+    for (var i = x.data.length - 1; i >= 0; i--) {
+      bets = bets + "&bull; <b>" + x.data[i].data.name + "</b> bets <b>£" + x.data[i].data.money + "</b> that the queen will die on <b>" + x.data[i].data.date.replace(/-/g, "/") + "</b><br>"
 
     }    
  
@@ -113,7 +113,8 @@ getBets()
       total = total + parseInt(x.data[i].data.money)
   }
     document.getElementById("title").innerHTML = "Place your bets now and you could win £" + total + "!"
-    document.getElementById("bets").innerHTML = bets    
+    document.getElementById("bets").innerHTML = bets  
+    document.getElementById("allbets").innerHTML = "All bets [" + x.data.length + "]"  
     })
     }
 </script>
