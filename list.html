@@ -92,7 +92,7 @@ body {
     var divisor = 0
     var winnertotal = 0
     for (let i = 0; i < x.data.length; i++) {
-winners = winners + "&bull; <b>" +x.data[i].data.name + "</b> <i>(betted £" + x.data[i].data.money + ")</i><br>"
+winners = winners + "&bull; <b>" +x.data[i].data.name + "</b> <i>(betted £" + x.data[i].data.money + ") (Date: " + x.data[i].data.date.replace(/-/g, "/") + ")</i><br>"
 total = total + parseInt(x.data[i].data.money)
 winnertotal = winnertotal + 1
 
