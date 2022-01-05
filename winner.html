@@ -74,7 +74,7 @@ body {
   <br><br>
   <div style="background-color: #313131; border-radius: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 30%; margin: 0 auto; padding: 1.5rem;">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-      <label id="moneylabel" style="color: #cccccc;"><i>Here are the found winners.</i></label><br><br>
+      <label id="moneylabel" style="color: #cccccc;"><i>Waiting on user input...</i></label><br><br>
       <label id="winners">Loading...</label>
   </div>
       </div><br>
@@ -105,7 +105,7 @@ if(x.data[i].data.date != document.getElementById("date").value)
     total = total + parseInt(x.data[i].data.money)
 }
 else{
-winners = winners + "<b>" +x.data[i].data.name + "</b> <i>(betted £" + x.data[i].data.money + ")</i><br>"
+winners = winners + "&bull; <b>" +x.data[i].data.name + "</b> <i>(betted £" + x.data[i].data.money + ")</i><br>"
 total = total + parseInt(x.data[i].data.money)
 divisor = divisor + 1
 winnertotal = winnertotal + 1
@@ -113,6 +113,11 @@ winnertotal = winnertotal + 1
     }
     document.getElementById("winners").innerHTML = winners
     document.getElementById("moneylabel").innerHTML = winnertotal + " Total Winner(s) (Each Winner Gets £" + (Math.round((total / divisor) * 100) / 100) +")"
+    if(winnertotal == 0)
+    {
+        document.getElementById("moneylabel").innerHTML = "No one has betted on this date!"
+        document.getElementById("winners").innerHTML = "No data to show."
+    }
     })
     }
 </script>
