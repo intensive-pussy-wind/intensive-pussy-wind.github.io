@@ -112,7 +112,7 @@ winnertotal = winnertotal + 1
 }
     }
     document.getElementById("winners").innerHTML = winners
-    document.getElementById("moneylabel").innerHTML = winnertotal + " Total Winners (Each Winner Gets £" + (total / divisor) +")"
+    document.getElementById("moneylabel").innerHTML = winnertotal + " Total Winner(s) (Each Winner Gets £" + (Math.round((total / divisor) * 100) / 100) +")"
     })
     }
 </script>
