@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bet on the Queen || All Bets</title>
+        <script src="https://cdn.jsdelivr.net/npm/faunadb@latest/dist/faunadb.js"></script>
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="GuypaBet">
+        <meta property="og:description" content="Bet on the Queen's death NOW!!!!!!!!!!!!">
+        <meta name="theme-color" content="#33aed6">
+        <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    </head>
+    <style>
+body{
+  font-family: 'Rubik';
+}
+
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/rubik/v14/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4iFWkU1Z4Y.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+body {
+  font-family: "Rubik";
+  font-weight: 400;
+  line-height: 1.6;
+  background-color: rgba(17,17,17,.04);
+  color: white;
+}
+
+.test{
+    
+    background-image: linear-gradient(to right, #262626, #454545);
+
+}
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+.closebtn:hover {
+  color: #cccccc;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+    </style>
+    <body onload="getWinners()" class="test">
+      <div style="text-align: center; padding-bottom: 10px; padding-top: 10px;">
+<h1>All Bets</h1>
+  <div style="background-color: #313131; border-radius: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 30%; margin: 0 auto; padding: 1.5rem;">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <label id="moneylabel" style="color: #cccccc;"><i>Loading...</i></label><br><br>
+      <label id="winners">Loading...</label>
+  </div>
+      </div><br>
+<script>
+    var faunadb = window.faunadb
+  var q = faunadb.query
+  var client = new faunadb.Client({
+    secret: 'fnAEcG0iEaAAyB4b6yraRVIIsvt7lFIxvPDfiD6y',
+    domain: 'db.eu.fauna.com',
+    scheme: 'https',
+  })
+  
+
+
+    function getWinners(){
+        client.query(
+   q.Map(
+  q.Paginate(q.Documents(q.Collection('falconbet2'))),
+  q.Lambda(x => q.Get(x))
+)).then (function(x){ 
+    let winners = ""
+    var total = 0
+    var divisor = 0
+    var winnertotal = 0
+    for (let i = 0; i < x.data.length; i++) {
+winners = winners + "&bull; <b>" +x.data[i].data.name + "</b> <i>(betted £" + x.data[i].data.money + ")</i><br>"
+total = total + parseInt(x.data[i].data.money)
+winnertotal = winnertotal + 1
+
+    }
+    document.getElementById("winners").innerHTML = winners
+    document.getElementById("moneylabel").innerHTML = winnertotal + " Total Bets(s)"
+    })
+    }
+</script>
+    </body>
+</html>
